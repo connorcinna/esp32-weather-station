@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ESP32 Weather Station</title>
+    <meta charset="utf-8">
+	<style>
+		h1 {text-align: center;}
+		p {text-align: center;}
+		body {text-align: center;}
+	</style>
+  </head>
+  <body onload="grab_data()">
+    <h1>Temperature</h1>
+    <p id="temperatureParagraph">something</p>
+    <h1>Humidity</h1>
+    <p id="humidityParagraph">something</p>
+	<script type="text/javascript">
+		function grab_data()
+		{
+			let ip = "https://jsonplaceholder.typicode.com/todos/1"
+			fetch(ip)
+				.then((response) => { return response.json(); })
+				.then((data) => 
+					{ 
+						//change data objects to whatever the json result is gonna be from the
+						//esp32
+						document.getElementById("humidityParagraph").innerText = data.userId;
+						document.getElementById("temperatureParagraph").innerText = data.id;
+					});
+		}
+	</script>
+  </body>
+</html>
